@@ -19,9 +19,9 @@
           <label for="publisedDate">Publised on (Year)</label>
         </div>
         <div class="input-field col s8">
-            <select v-model="categories" multiple>
-              <option value="" disabled selected>Categories</option>
-              <option v-for="(category, i) in categories" :value="i" :key="i">
+            <select v-model="categories" multiple id="categories">
+              <option value="" disabled>Categories</option>
+              <option v-for="(category, i) in categories" :key="i" :value="category">
                 {{category}}
               </option>
             </select>
@@ -34,6 +34,9 @@
 </template>
 
 <script>
+const $ = require('jquery')
+window.$ = $
+
 export default {
     name: 'NewBook',
     data (){

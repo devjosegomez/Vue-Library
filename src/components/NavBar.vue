@@ -2,7 +2,7 @@
     <div class="navbar main-nav disable-select">
         <nav class="nav-extended purple darken-2">
             <div class="nav-content">
-                <router-link :to="{ name : 'Sevaser'}">
+                <router-link :to="{ name : 'Home'}">
                     <span class="nav-title">
                          <i class="material-icons">home</i>
                     </span>
