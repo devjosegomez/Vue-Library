@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
 import NewBook from '@/components/NewBook'
+import Catalog from '@/components/Catalog'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
       path: '/NewBook',
       name: 'NewBook',
       component: NewBook
+    },
+    {
+      path: '/Catalog',
+      name: 'Catalog',
+      component: Catalog
     }
   ]
 })

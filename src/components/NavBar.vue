@@ -8,7 +8,7 @@
                     </span>
                 </router-link>
 
-                <router-link :to="{ name : 'PickaParty'}">
+                <router-link :to="{ name : 'Catalog'}">
                     <span class="nav-title">
                          <i class="material-icons">account_balance</i>
                     </span>

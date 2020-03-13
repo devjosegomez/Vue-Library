@@ -3,7 +3,7 @@
     <form class="col s12" @submit="formSubmit">
       <div class="row">
         <div class="input-field col s6">
-            <input id="username" type="text" class="validate" maxlength="18" v-model="username">
+            <input id="username" type="text" class="validate" maxlength="18" v-model="username" required>
             <label for="username">Username</label>
         </div>
         <div class="input-field col s6">
@@ -25,11 +25,11 @@
 
       <div class="row">
         <div class="input-field col s6">
-          <input id="email" type="email" class="validate" maxlength="27" v-model="email">
+          <input id="email" type="email" class="validate" maxlength="27" v-model="email" required>
           <label for="email">Email</label>
         </div>
         <div class="input-field col s6">
-          <input id="password" type="password" class="validate" maxlength="27" v-model="password">
+          <input id="password" type="password" class="validate" maxlength="27" v-model="password" required>
           <label for="password">Password</label>
         </div>
       </div>
@@ -65,11 +65,12 @@ export default {
                 "phone": this.phone
               })
               .then(function (response) {
-                  currentObj.output = response.data;
-                  this.$route.router.go('/Login')
+                  alert('Account was successfully created!')
+                  window.location.href = '/Login';
               })
               .catch(function (error) {
-                currentObj.output = error;
+                alert('An error has ocurred \npleae try again')
+                window.location.href = '/Register';
               });
             }
         }

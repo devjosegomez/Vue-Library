@@ -87,12 +87,14 @@ export default {
                 category: ["Drama", "Test"]
               })
               .then(function (response) {
-                  currentObj.output = response.data;
-
-                  this.$route.router.go('/NewBook')
+                let newBook = confirm("Account was successfully created! \n Do you want to add a new Book? (Y/n)")
+                let route = (newBook ? '/NewBook' : '/')
+                window.location.href = route;
+                
               })
               .catch(function (error) {
-                currentObj.output = error;
+                alert('An error has ocurred \npleae try again')
+                window.location.href = '/NewBook';
               });
             }
         }
