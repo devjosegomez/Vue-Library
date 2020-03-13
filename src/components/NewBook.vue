@@ -45,7 +45,6 @@ export default {
           author: '',
           publisedDate: '',
           selectedCategories: [],
-          success: false,
           categories: 
           [
             "Action and Adventure",
@@ -89,7 +88,8 @@ export default {
               })
               .then(function (response) {
                   currentObj.output = response.data;
-                  this.success = true
+
+                  this.$route.router.go('/NewBook')
               })
               .catch(function (error) {
                 currentObj.output = error;
