@@ -19,13 +19,12 @@
           <label for="publised">Publised on (Year)</label>
         </div>
         <div class="input-field col s8">
-            <select multiple>
-            <option value="" disabled selected>You can pick multiple categories*</option>
-            <option value="1">Placeholder</option>
-            <option value="2">Placeholder2</option>
-            <option value="3">Placeholder3</option>
+            <select v-model="categories" multiple>
+              <option value="" disabled selected>Categories</option>
+              <option v-for="(category, i) in categories" :value="i" :key="i">
+                {{category}}
+              </option>
             </select>
-            <label>Categories</label>
         </div>
 
         <input type="submit" value="Save book" class="btn-large">
@@ -39,7 +38,32 @@ export default {
     name: 'NewBook',
     data (){
         return {
-
+          categories: 
+          [
+            "Action and Adventure",
+            "Anthology",
+            "Classic",
+            "Comic and Graphic Novel",
+            "Crime and Detective",
+            "Drama",
+            "Fable",
+            "Fairy Tale",
+            "Fan-Fiction",
+            "Fantasy",
+            "Historical Fiction",
+            "Horror",
+            "Humor",
+            "Legend",
+            "Magical Realism",
+            "Mystery",
+            "Mythology",
+            "Realistic Fiction",
+            "Romance",
+            "Satire",
+            "Science Fiction (Sci-Fi)",
+            "Short Story",
+            "Suspense/Thriller",
+          ]
         }
     },
     mounted(){
