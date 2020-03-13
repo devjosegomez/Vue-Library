@@ -1,22 +1,22 @@
 <template>
 <div class="row card-content valign center">
     <h3>New book</h3>
-    <form class="col s12" id="NewBook">
+    <form class="col s12" id="NewBook" @submit="formSubmit">
       <div class="row">
         <div class="input-field col s6">
-          <input id="title" type="text" class="validate" maxlength="60">
+          <input id="title" type="text" class="validate" maxlength="60" v-model="title">
           <label for="title">Book's title</label>
         </div>
         <div class="input-field col s6">
-          <input id="author" type="text" class="validate" maxlength="50">
+          <input id="author" type="text" class="validate" maxlength="50"  v-model="author">
           <label for="author">Author</label>
         </div>
       </div>
       
       <div class="row">
         <div class="input-field col s4">
-          <input id="publised" type="number" class="validate" min="1" max="9999">
-          <label for="publised">Publised on (Year)</label>
+          <input id="publisedDate" type="number" class="validate" min="1" max="9999"  v-model="publisedDate">
+          <label for="publisedDate">Publised on (Year)</label>
         </div>
         <div class="input-field col s8">
             <select v-model="categories" multiple>
@@ -38,6 +38,11 @@ export default {
     name: 'NewBook',
     data (){
         return {
+          title: '',
+          author: '',
+          publisedDate: '',
+          selectedCategories: [],
+          success: false,
           categories: 
           [
             "Action and Adventure",
@@ -68,7 +73,26 @@ export default {
     },
     mounted(){
     M.AutoInit();
-    }
+    },
+    methods: {
+          formSubmit(e) {
+              e.preventDefault();
+              let currentObj = this;
+              this.axios.post('http://localhost:3000/book', {
+                name: this.title,
+                author: this.author,
+                publisedDate: this.publisedDate,
+                category: ["Drama", "Test"]
+              })
+              .then(function (response) {
+                  currentObj.output = response.data;
+                  this.success = true
+              })
+              .catch(function (error) {
+                currentObj.output = error;
+              });
+            }
+        }
 }
 </script>
 
